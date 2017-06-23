@@ -1,5 +1,7 @@
 # LeetCode Solutions
 
+[TOC]
+
 ## Easy
 
 ### 412.Fizz Buzz
