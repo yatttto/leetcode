@@ -76,3 +76,49 @@ class Solution(object):
         """
         return sum(sorted(nums)[::2])
 ```
+
+
+### 557.Reverse Words in a String III
+
+*Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.*
+
+```
+Input: "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+```
+
+思路：很简单利用字符串方法以及列表切片
+
+```python
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return " ".join(x[::-1] for x in s.split(' '))
+```
+
+
+
+### 344.Reverse String
+
+*Write a function that takes a string as input and returns the string reversed.*
+
+***Example:***
+*Given s = "hello", return "olleh".*
+
+思路：slice or built-in function
+
+```
+class Solution(object):
+    def reverseString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return s[::-1]
+```
+
+
+
