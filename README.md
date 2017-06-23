@@ -110,7 +110,7 @@ class Solution(object):
 
 思路：slice or built-in function
 
-```
+```python
 class Solution(object):
     def reverseString(self, s):
         """
@@ -121,4 +121,86 @@ class Solution(object):
 ```
 
 
+
+### 575.Distribute Candies
+
+*Given an integer array with **even** length, where different numbers in this array represent different **kinds** of candies. Each number means one candy of the corresponding kind. You need to distribute these candies **equally** in number to brother and sister. Return the maximum number of **kinds** of candies the sister could gain.*
+
+```
+Input: candies = [1,1,2,2,3,3]
+Output: 3
+Explanation:
+There are three different kinds of candies (1, 2 and 3), and two candies for each kind.
+Optimal distribution: The sister has candies [1,2,3] and the brother has candies [1,2,3], too. 
+The sister has three different kinds of candies. 
+```
+
+思路：这里的意思是，用一个列表表示一堆糖，不同的数字代表种类不一样的糖，有兄妹二人分糖，试问妹妹最多可以分到几种糖。这里的话，我们先得到这一堆糖里有多少种糖，可以用集合得到，然后再算平分，也就是该列表长度的一半就是妹妹最终能拿到的糖数。再对得到的两个数进行比较，较小的也就是妹妹最终能得到的糖的种类。
+
+```python
+class Solution(object):
+    def distributeCandies(self, candies):
+        """
+        :type candies: List[int]
+        :rtype: int
+        """
+        return min(len(set(candies)),len(candies)/2)
+```
+
+
+
+### 136.Single Number
+
+*Given an array of integers, every element appears *twice* except for one. Find that single one.
+
+***Note:***
+*Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?*
+
+思路：位运算。
+
+```python
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        rec = 0
+        for n in nums:
+            rec ^= n
+        return rec
+    	#or
+        #return reduce(lambada:x,y x^y,nums)
+```
+
+
+
+### 485.Max Consecutive Ones
+
+*Given a binary array, find the maximum number of consecutive 1s in this array.*
+
+```
+Input: [1,1,0,1,1,1]
+Output: 3
+Explanation: The first two digits or the last three digits are consecutive 1s.
+    The maximum number of consecutive 1s is 3.
+```
+
+*Note*
+
+**The input array will only contain 0 and 1.**
+**The length of input array is a positive integer and will not exceed 10,000**
+
+思路：利用`split()`函数。
+
+```python
+class Solution(object):
+    def findMaxConsecutiveOnes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
+        return max(map(len,''.join([str(n) for n in nums]).split('0')))
+```
 
