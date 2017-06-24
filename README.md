@@ -2,6 +2,8 @@
 
 [TOC]
 
+
+
 ## Easy
 
 ### 412.Fizz Buzz
@@ -204,5 +206,58 @@ class Solution(object):
         """
         
         return max(map(len,''.join([str(n) for n in nums]).split('0')))
+```
+
+
+
+### 292.Nim Game
+
+*You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.*
+
+*Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.*
+
+*For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.*
+
+思路：判断是否是4的倍数即可.
+
+```python
+class Solution(object):
+    def canWinNim(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        return (n%4 != 0)
+```
+
+
+
+### 521.Longest Uncommon Subsequence I
+
+*Given a group of two strings, you need to find the longest uncommon subsequence of this group of two strings. The longest uncommon subsequence is defined as the longest subsequence of one of these strings and this subsequence should not be **any** subsequence of the other strings.*
+
+*A **subsequence** is a sequence that can be derived from one sequence by deleting some characters without changing the order of the remaining elements. Trivially, any string is a subsequence of itself and an empty string is a subsequence of any string.*
+
+*The input will be two strings, and the output needs to be the length of the longest uncommon subsequence. If the longest uncommon subsequence doesn't exist, return -1.*
+
+```
+Input: "aba", "cdc"
+Output: 3
+Explanation: The longest uncommon subsequence is "aba" (or "cdc"), 
+because "aba" is a subsequence of "aba", 
+but not a subsequence of any other strings in the group of two strings. 
+```
+
+思路：这道题很无聊。。。
+
+```python
+class Solution(object):
+    def findLUSlength(self, a, b):
+        """
+        :type a: str
+        :type b: str
+        :rtype: int
+        """
+        return -1 if a==b else max(len(a),len(b))
 ```
 
