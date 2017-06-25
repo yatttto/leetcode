@@ -261,3 +261,82 @@ class Solution(object):
         return -1 if a==b else max(len(a),len(b))
 ```
 
+
+
+### 226.Invert Binary Tree
+
+思路：翻转二叉树。
+
+```python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def invertTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: TreeNode
+        """
+        if root:
+            root.left,root.right = self.invertTree(root.right),self.invertTree(root.left)
+            return root
+```
+
+
+
+### 349.Intersection of Two Arrays
+
+*Given two arrays, write a function to compute their intersection.*
+
+*Example:*
+*Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].*
+
+*Note:*
+*Each element in the result must be unique.*
+*The result can be in any order.*
+
+思路：变成集合再用集合运算
+
+```python
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        return list(set(nums1)&set(nums2))
+```
+
+
+
+### 283.Move Zeroes
+
+*Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.*
+
+*For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].*
+
+*Note:*
+*You must do this in-place without making a copy of the array.*
+*Minimize the total number of operations.*
+
+思路：先查找列表中为0的元素，再删去一个0后增加一个。
+
+```python
+class Solution(object):
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                nums.remove(0)
+                nums.append(0)
+
+```
+
