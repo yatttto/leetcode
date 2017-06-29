@@ -381,3 +381,76 @@ class Solution(object):
 
 
 
+### 169.Majority Element
+
+*Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.*
+
+*You may assume that the array is non-empty and the majority element always exist in the array.*
+
+思路：这里有一个很取巧的算法，就是先将这个列表排序，然后取这个列表的中间的数，因为要求是找出出现半数以上的数，那么中位数一定是我们需要得到的值。
+
+```python
+#python2.7
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        return sorted(nums)[len(nums)/2]
+```
+
+
+
+### 387.First Unique Character in a String
+
+*Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.*
+
+```
+s = "leetcode"
+return 0.
+
+s = "loveleetcode",
+return 2.
+```
+
+思路：查找字符串中的元素，但是要注意一点，如果是穷举也就是遍历这个字符串可能会超出时间限制，我们可以精简到26个字母，当然如果题目包括数字也可以用ascii码来表示。
+
+```python
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        return min([s.find(ch) for ch in string.ascii_lowercase if s.count(ch) ==1] or [-1]) 
+```
+
+
+
+### 100.Same Tree
+
+*Given two binary trees, write a function to check if they are equal or not.*
+
+*Two binary trees are considered equal if they are structurally identical and the nodes have the same value.*
+
+```python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
+        if p and q:
+            return p.val == q.val and self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
+        return p is q
+```
+
